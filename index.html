@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sumaq Inti</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--t:#14b8a6;--td:#0f9488;--y:#fbbf24;--bg:#e8f6fb;--tx:#1e3a4c;--m:#6b8494}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Nunito,sans-serif;background:var(--bg);color:var(--tx)}
+button,input{font-family:inherit}
+a{color:var(--td);font-weight:700}
+.btn{border:0;background:var(--t);color:#fff;font-weight:700;padding:10px 18px;border-radius:12px;cursor:pointer;font-size:14px;transition:.2s}
+.btn:hover{background:var(--td)}.btn.o{background:#fff;color:var(--td);border:2px solid var(--t)}.btn:disabled{background:#c5d6dc;color:#fff;cursor:default}
+.card{background:#fff;border-radius:18px;padding:18px;box-shadow:0 4px 14px rgba(20,120,140,.08)}
+.m{color:var(--m)}.s{font-size:12px}
+h1{font-size:28px;font-weight:800}h2{font-size:18px}h3{font-size:16px;margin:20px 0 12px}
+.sub{color:var(--m);margin:2px 0 18px}
+.logo{font-weight:800;font-size:20px;display:flex;gap:6px;align-items:center}.logo span{color:var(--td)}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.bar{height:10px;background:#e2eef2;border-radius:99px;overflow:hidden}.bar i{display:block;height:100%;background:linear-gradient(90deg,var(--t),#34d399);border-radius:99px;transition:width 1s}
+/* landing */
+.lh{display:flex;justify-content:space-between;align-items:center;padding:14px 6vw;background:#fff;gap:16px;position:sticky;top:0;z-index:5;border-bottom:1px solid #eef3f5}
+.lh nav{display:flex;gap:26px;font-size:14px;font-weight:600}.lh nav a{color:var(--tx);text-decoration:none;font-weight:600}
+.acts{display:flex;gap:14px;align-items:center}
+.lk{background:none;border:0;font-weight:700;font-size:14px;color:var(--tx);cursor:pointer}
+.yb{border:0;background:var(--y);color:#3b2a00;font-weight:800;padding:11px 20px;border-radius:12px;cursor:pointer;font-size:14px;transition:.2s}.yb:hover{background:#f5b50f}
+.hero{display:grid;grid-template-columns:1.1fr 1fr;gap:30px;align-items:center;padding:50px 6vw;background:#fff}
+.tag{display:inline-block;background:#e6f7f5;color:var(--td);font-size:12px;font-weight:700;padding:6px 12px;border-radius:99px;margin-bottom:16px}
+.hero h1{font-size:54px;line-height:1.05;color:#0f2a43;margin-bottom:16px}.hero h1 em,.lft h2 em{font-style:normal;color:var(--t)}
+.hero p{color:var(--m);font-size:16px;max-width:460px;margin-bottom:24px;line-height:1.5}
+.pv{background:#fff;border:4px solid #1e3a4c;border-radius:22px;padding:16px;box-shadow:0 20px 40px rgba(20,60,90,.2)}
+.pvh{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;font-size:13px}
+.pv h2{margin:2px 0 10px}.pvm{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:10px 0;text-align:center;font-size:11px;color:var(--m)}.pvm div{background:#f3fafb;border-radius:10px;padding:8px}.pvm b{display:block;font-size:16px;color:var(--tx)}
+.pvb{background:#12324a;color:#fff;border-radius:12px;padding:12px;display:flex;gap:10px;align-items:center;font-size:13px}.pvb small{display:block;opacity:.7}
+.sec{padding:50px 6vw;text-align:center}.sec h2{font-size:30px;color:#0f2a43;margin-bottom:22px}.sec .card b{font-size:34px;display:block;margin-bottom:6px}.sec .card p{color:var(--m);font-size:14px;margin-top:4px}
+.sec.w{background:#fff}.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.foot{text-align:center;padding:24px;color:var(--m);font-size:13px}
+/* login */
+.lg2{display:grid;grid-template-columns:1fr 1fr;min-height:100vh;background:#fff}
+.lft{background:linear-gradient(180deg,#bfe9f7,#e3f6fb 55%,#fff);padding:40px;position:relative;overflow:hidden}
+.lft h2{font-size:36px;line-height:1.15;color:#0f2a43;margin-top:50px;max-width:320px}
+.lft svg{position:absolute;left:0;bottom:0;width:100%;height:45%}
+.rgt{display:flex;align-items:center;justify-content:center;padding:30px}
+.fi{width:100%;max-width:340px;display:flex;flex-direction:column;gap:14px}.fi h2{font-size:30px;color:#0f2a43}
+.iw{position:relative}.iw span{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px}
+.iw input{padding-left:42px}
+.fi input,.sim input{padding:13px 14px;border:2px solid #d5e6ec;border-radius:12px;font-size:15px;outline:none;width:100%}
+.fi input:focus,.sim input:focus{border-color:var(--t)}
+.er{color:#c0392b;font-size:13px;min-height:16px}.sw{text-align:center;font-size:14px;display:block}
+/* app */
+.app{display:flex;min-height:100vh}
+.side{width:210px;background:#fff;padding:20px 14px;display:flex;flex-direction:column;gap:6px;border-right:1px solid #d9eaf0;flex-shrink:0}
+.side .logo{margin-bottom:16px}
+.side button{display:flex;gap:10px;align-items:center;padding:11px 14px;border-radius:12px;border:0;background:none;color:var(--tx);font-weight:600;font-size:14px;cursor:pointer;text-align:left}
+.side button:hover{background:#e6f7f5}.side button.on{background:#d4f1ee;color:var(--td)}
+.main{flex:1;padding:18px 24px;max-width:1100px}
+.top{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-bottom:18px;font-size:13px;font-weight:700}
+.av{width:38px;height:38px;border-radius:50%;background:var(--t);color:#fff;display:grid;place-items:center;font-weight:800;text-transform:uppercase}
+.lev{display:flex;gap:18px;align-items:center;margin-bottom:14px}
+.bdg{width:70px;height:70px;border-radius:50%;background:linear-gradient(135deg,#fde68a,var(--y));display:grid;place-items:center;font-size:34px;flex-shrink:0}
+.stat{display:flex;gap:12px;align-items:center}.stat span{font-size:28px}.stat b{font-size:20px;display:block}
+.steps{display:flex;justify-content:space-between;position:relative}
+.steps::before{content:"";position:absolute;top:44px;left:8%;right:8%;height:3px;background:#d5e6ec}
+.st{text-align:center;font-size:12px;font-weight:700;position:relative;flex:1}.st small{display:block;color:var(--m);font-weight:600}
+.dt{width:50px;height:50px;border-radius:50%;margin:0 auto 6px;display:grid;place-items:center;font-size:20px;background:#e2eaee;color:#9bb0ba;position:relative}
+.st.dn .dt{background:var(--t);color:#fff}.st.ac .dt{background:var(--td);color:#fff;box-shadow:0 0 0 6px #c9efe9}
+.cc{display:flex;flex-direction:column;gap:8px}.cc .t{display:flex;gap:10px;align-items:center;font-weight:700;font-size:14px}.cc .t span{font-size:28px}
+.row{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700}.row .bar{flex:1;height:7px}
+.lg{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid #eef3f5;font-size:14px}.lg:last-child{border:0}
+.les{margin-bottom:12px}.les p{margin:6px 0 12px;line-height:1.5}
+.sim label{display:block;font-size:13px;font-weight:700;margin:10px 0 4px}.res{margin-top:14px;padding:12px;background:#e6f7f5;border-radius:12px;font-size:14px;line-height:1.5}
+.opt{display:block;padding:10px 12px;border:2px solid #e2eef2;border-radius:12px;margin:6px 0;cursor:pointer;font-size:14px}
+.opt.ok{border-color:#16a34a;background:#dcfce7}.opt.no{border-color:#dc2626;background:#fee2e2}
+.bd{text-align:center;padding:16px}.bd b{font-size:40px;display:block}.bd.lk{opacity:.4;filter:grayscale(1)}
+.cert{text-align:center;padding:30px;border:4px double var(--y)}.cert h2{font-size:24px;margin:8px 0}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--tx);color:#fff;padding:12px 20px;border-radius:99px;font-weight:700;font-size:14px;z-index:9;display:none}
+@media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr}.hero{grid-template-columns:1fr}.hero h1{font-size:36px}.lh nav{display:none}}
+@media(max-width:700px){.app{flex-direction:column}.side{width:100%;flex-direction:row;overflow-x:auto;padding:10px}.side .logo{display:none}.side button{white-space:nowrap}.g3,.g2,.g4{grid-template-columns:1fr}.lg2{grid-template-columns:1fr}.lft{display:none}.main{padding:14px}.steps{overflow-x:auto;gap:12px}.st{min-width:78px}.steps::before{display:none}}
+/* portal docente */
+.tp,.pu{font-family:Poppins,Nunito,sans-serif}.tp{background:#faf6ee;color:#3b135c}
+.tp .side{background:#4f2a6b;border:0;width:216px;color:#fff;min-height:100vh}
+.tp .side button{color:#fff;font-weight:500;white-space:nowrap}.tp .side button:hover{background:rgba(255,255,255,.12)}.tp .side button.on{background:#ffc845;color:#3b1d55;font-weight:700}
+.bl{display:flex;gap:10px;align-items:center;margin-bottom:6px}.bl b{display:block;font-size:17px;line-height:1.1}.bl small{opacity:.8;font-size:11px}
+.lg3{width:48px;height:41px;border-radius:12px;background:#fbf5ee;display:grid;place-items:center;font-size:24px;flex-shrink:0}img.lg3{background:none;object-fit:contain;border-radius:0}.lg3.big{width:112px;height:96px;margin-bottom:30px}
+.sch{background:rgba(255,255,255,.14);border-radius:10px;padding:8px 12px;font-size:12px;margin-bottom:12px}
+.lic{margin-top:auto;background:rgba(255,255,255,.14);border-radius:12px;padding:10px 12px;font-size:11px}.lic b{display:block}
+.tp .main{position:relative;padding:22px 26px}.tp .top{position:absolute;right:26px;top:22px;margin:0}
+.chip{background:#fff;border-radius:10px;padding:8px 14px;font-weight:700;font-size:13px;box-shadow:0 2px 6px rgba(80,40,100,.08)}
+.avt{width:40px;height:40px;border-radius:50%;background:#f2c3e0;display:grid;place-items:center;font-weight:700;font-size:13px}
+.tp h1{font-size:24px;color:#3b135c}.tp h2{font-size:15px;color:#3b135c}.ps{color:#7b6890;font-size:13px;margin-bottom:18px}
+.pc{background:#fff;border-radius:18px;padding:18px;box-shadow:0 4px 14px rgba(80,40,100,.07)}
+.k4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}.k4 b{font-size:28px;color:#3b135c;display:block}.k4 span{font-size:12px;color:#7b6890}
+.g2p{display:grid;grid-template-columns:1.5fr 1fr;gap:14px}.g2e{display:grid;grid-template-columns:1.7fr 1fr;gap:14px}
+.mr{display:grid;grid-template-columns:130px 1fr 40px;gap:10px;align-items:center;font-size:13px;margin:10px 0}.mr b{text-align:right}
+.cr{display:grid;grid-template-columns:1fr 150px 40px;gap:10px;align-items:center;font-size:13px;margin:12px 0}.cr b{text-align:right}
+.pb{height:9px;background:#e5ddf1;border-radius:99px;overflow:hidden}.pb i{display:block;height:100%;background:linear-gradient(90deg,#7fb8a2,#ffc845);border-radius:99px}
+.ch{display:flex;gap:14px;align-items:flex-end;height:150px;margin-top:14px}.ch div{flex:1;height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:4px}.ch i{display:block;width:100%;background:#6b3f8e;border-radius:6px 6px 0 0}.ch i.y{background:#ffc845}.ch small{font-size:11px;color:#7b6890}
+.al{border-radius:12px;padding:10px 12px;font-size:13px;margin-bottom:10px;display:flex;gap:8px}.a1{background:#fbd3df}.a2{background:#fff1c6}.a3{background:#d9f0e4}.a4{background:#e5ddf1}
+.pbtn{border:0;background:#4f2a6b;color:#fff;font-weight:700;padding:12px 18px;border-radius:12px;cursor:pointer;font-size:14px;font-family:inherit;width:100%}.pbtn:hover{background:#3f1f54}.pbtn.o{background:#fff;color:#4f2a6b;border:2px solid #4f2a6b}.pbtn.y{background:#ffc845;color:#3b1d55}.pbtn.y:hover{background:#f5b50f}
+.ph{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;padding-right:60px}.ctr{display:flex;gap:10px}
+.tp input,.tp select{padding:9px 12px;border:1px solid #d9cfe6;border-radius:10px;font-family:inherit;font-size:13px;background:#fff;color:#3b2552}
+.tt{width:100%;border-collapse:collapse;font-size:13px}.tt th{text-align:left;color:#7b6890;font-weight:500;padding:8px}.tt td{padding:9px 8px;border-top:1px solid #f0eaf6}.tt tr.sel td{background:#efe9f8}.tt tbody tr{cursor:pointer}
+.chp{display:inline-block;font-size:11px;font-weight:700;padding:3px 10px;border-radius:99px}.ok{background:#d6f0e3;color:#1e7a50}.wa{background:#ffe9a8;color:#8a5a00}.no{background:#fbd0e0;color:#b02a5c}.lil{background:#e5ddf1;color:#4f2a6b}.yl{background:#ffe9a8;color:#8a5a00}
+.dh{display:flex;gap:12px;align-items:center;margin-bottom:10px}.dh .avt{width:54px;height:54px;font-size:16px}
+.sr{display:flex;justify-content:space-between;padding:9px 0;border-top:1px solid #f0eaf6;font-size:13px}
+.rc{display:flex;gap:12px;align-items:center;padding:12px;border:2px solid #eee8f5;border-radius:14px;margin-bottom:10px;cursor:pointer;background:#fff}.rc.on{border-color:#6b3f8e;background:#f3edfa}.rc input{accent-color:#4f2a6b;width:18px;height:18px;padding:0}
+.ri{width:40px;height:40px;border-radius:10px;display:grid;place-items:center;font-size:20px}.rt{flex:1;font-size:14px;font-weight:600}.rt small{display:block;color:#7b6890;font-size:11px;font-weight:400}
+.fm label{display:block;font-size:12px;font-weight:700;margin:12px 0 4px}.fm input{width:100%}.dg{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fm .sw2{display:flex;justify-content:space-between;align-items:center;margin:14px 0 8px}.fm .sw2 input{width:auto}
+.sg{display:flex;height:34px;border-radius:99px;overflow:hidden;font-size:12px;font-weight:700;color:#fff;margin-top:10px}.sg div{display:grid;place-items:center}
+.ex{border:1px dashed #cdbfe0;border-radius:12px;padding:12px;font-size:13px;margin-bottom:12px}
+.pu .lft{background:#4f2a6b;color:#fff;display:flex;flex-direction:column;justify-content:center;padding:60px}.pu .lft h2{color:#fff;margin:0 0 14px;font-size:38px}
+.lp{opacity:.9;max-width:380px;line-height:1.6;margin-bottom:20px;font-size:14px}.yb.sm{font-size:12px;padding:7px 14px;align-self:flex-start;border-radius:99px;cursor:default}
+.pu .rgt{background:#faf6ee;color:#3b135c}.pu .fi .m{color:#7b6890;font-size:13px}.pu .fi h2{color:#3b135c}
+.tabs{display:flex;background:#e4daf0;border-radius:12px;padding:4px;gap:4px}.tabs button{flex:1;border:0;background:none;padding:9px;border-radius:9px;font-weight:700;font-size:13px;cursor:pointer;color:#6b5a80}.tabs button.on{background:#fff;color:#4f2a6b}
+.lg2:not(.pu) .tabs{background:#e6f7f5}.lg2:not(.pu) .tabs button.on{color:var(--td)}.kp{font-size:13px;display:flex;gap:6px;align-items:center}.pu .fi .pbtn{padding:14px}
+@media(max-width:900px){.k4{grid-template-columns:1fr 1fr}.g2p,.g2e{grid-template-columns:1fr}.tp .top{position:static;margin-bottom:10px}.ph{padding-right:0}}
+@media(max-width:700px){.k4{grid-template-columns:1fr}.pu .lft{display:none}.tp .side{width:100%;min-height:0;flex-direction:row;overflow-x:auto}.lic,.sch,.bl{display:none}.mr{grid-template-columns:100px 1fr 38px}.cr{grid-template-columns:1fr}.tp .main{padding:14px}}
+@media print{.side,.top,.noprint,.toast{display:none!important}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="toast" id="toast"></div>
+<script>
+const $=s=>document.querySelector(s);
+const LV=['Básico','Aventurero','Explorador','Inversor','Experto'];
+const C=[
+{id:'c1',t:'Educación financiera para la vida',i:'📘',l:[['¿Qué es el dinero?','El dinero es un medio de intercambio: sirve para comprar, ahorrar e invertir. Usarlo bien empieza por saber cuánto entra y cuánto sale.'],['Ingresos y gastos','Ingreso es lo que recibes; gasto es lo que pagas. Separa los gastos necesarios (comida, transporte) de los gustos, y busca gastar menos de lo que ganas.'],['Ahorrar con un objetivo','Ahorrar es más fácil con una meta clara: un monto y una fecha. Separa tu ahorro apenas recibas dinero, no al final del mes.']],
+q:[['¿Qué es un gasto?',['Dinero que recibes','Dinero que pagas','Dinero que ahorras'],1],['¿Qué conviene hacer primero al recibir dinero?',['Gastarlo todo','Separar tu ahorro','Prestarlo'],1],['Una buena meta de ahorro tiene...',['Monto y fecha','Solo un deseo','Ningún plazo'],0]]},
+{id:'c2',t:'Uso de simuladores financieros',i:'💻',l:[['Para qué sirven los simuladores','Un simulador te deja probar números sin arriesgar dinero real. Cambia el ahorro, el tiempo o el interés y mira el resultado antes de decidir.'],['Interés compuesto','Con interés compuesto ganas intereses sobre tu dinero y también sobre los intereses anteriores. Mientras más tiempo pase, mayor es el efecto.']],
+q:[['El interés compuesto significa que ganas intereses sobre...',['Solo tu aporte inicial','Tu aporte y los intereses ya ganados','Nada'],1],['Un simulador financiero sirve para...',['Garantizar ganancias','Probar escenarios antes de decidir','Reemplazar tu presupuesto'],1],['Si aumentas los años de ahorro, el resultado final normalmente...',['Crece','Baja','No cambia'],0]]},
+{id:'c3',t:'Seguros y protección financiera',i:'🛡️',l:[['¿Qué es un seguro?','Un seguro es un acuerdo: pagas una prima y la aseguradora cubre ciertos riesgos, como salud, robo o accidentes.'],['Fondo de emergencia','Es dinero guardado solo para imprevistos. Una guía común es juntar entre 3 y 6 meses de tus gastos básicos.']],
+q:[['Un seguro sirve para...',['Cubrir pérdidas por imprevistos','Ganar dinero rápido','Evitar los gastos'],0],['El fondo de emergencia se usa para...',['Compras de ocio','Imprevistos reales','Inversiones riesgosas'],1],['Una guía común es guardar un fondo de...',['3 a 6 meses de gastos','1 día de gastos','Tu sueldo de todo el año'],0]]}];
+const CH=[['Registra tus gastos 3 días','Anota cada gasto durante tres días y revisa en qué se fue tu dinero.'],['Define una meta de ahorro','Elige algo que quieras comprar, su costo y una fecha.'],['Arma tu presupuesto del mes','Usa el simulador de presupuesto con tus datos reales.'],['Explica el interés compuesto','Cuéntaselo a un amigo con tus propias palabras.']];
+const B=[['🌱','Primer paso','Completa una lección',d=>d.ls.length>=1],['🧮','Calculador','Usa un simulador',d=>d.sm.length>=1],['🧠','Cerebrito','Aprueba un quiz',d=>Object.values(d.qz).some(v=>v>=2)],['🏁','Retador','Completa un reto',d=>d.ch.length>=1],['⭐','Explorador','Llega a 100 puntos',d=>d.p>=100],['🏆','Experto','Llega a 400 puntos',d=>d.p>=400]];
+const NAV=[['inicio','🏠','Inicio'],['cursos','📘','Mis cursos'],['simuladores','🎮','Simuladores'],['quizzes','📝','Quizzes'],['retos','🏁','Retos'],['recompensas','🏆','Recompensas']];
+
+/* datos */
+const U=()=>{try{return JSON.parse(localStorage.getItem('si_u')||'{}')}catch(e){return {}}};
+const SU=u=>localStorage.setItem('si_u',JSON.stringify(u));
+let me=null,v='land',reg=false,sel=null,qsel=null,qres=null;
+const cur=()=>U()[me];
+const save=fn=>{const u=U();fn(u[me]);SU(u)};
+function toast(t){const e=$('#toast');e.textContent=t;e.style.display='block';clearTimeout(toast.h);toast.h=setTimeout(()=>e.style.display='none',2200)}
+function add(n,t){save(x=>{x.d.p+=n;x.d.log.unshift([t,n,new Date().toLocaleDateString('es-PE')]);x.d.log=x.d.log.slice(0,5)});toast('+'+n+' puntos: '+t)}
+const go=x=>{v=x;sel=qsel=qres=null;render();scrollTo(0,0)};
+const lvl=p=>Math.min(4,Math.floor(p/100));
+const cdone=(d,c)=>c.l.filter((_,i)=>d.ls.includes(c.id+i)).length;
+
+/* sesión */
+const ses=()=>localStorage.getItem('si_s')||sessionStorage.getItem('si_s');
+const login=(e,k)=>(k?localStorage:sessionStorage).setItem('si_s',e);
+const role=x=>x.r||'e';
+const esc=t=>String(t).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
+let rol='e',rl0=0;
+function doReg(){const n=$('#n').value.trim(),g=$('#g').value.trim(),c=$('#c')?$('#c').value.trim():'',e=$('#e').value.trim().toLowerCase(),p=$('#p').value;
+ if(!n||!e.includes('@'))return $('#er').textContent='Escribe tu nombre y un correo válido.';
+ if(rol!='e'&&(!c||!g))return $('#er').textContent='Escribe tu colegio y tu sección.';
+ if(p.length<6)return $('#er').textContent='La contraseña debe tener al menos 6 caracteres.';
+ const u=U();if(u[e])return $('#er').textContent='Ese correo ya está registrado.';
+ u[e]={n,g,c,r:rol,p,d:{p:0,ls:[],qz:{},sm:[],ch:[],log:[]},t:{asig:[],draft:null,notas:{}}};SU(u);login(e,true);v='inicio';render()}
+function doLog(){const e=$('#e').value.trim().toLowerCase(),p=$('#p').value,x=U()[e];
+ if(!x||x.p!==p)return $('#er').textContent='Correo o contraseña incorrectos.';
+ if(role(x)!=rol)return $('#er').textContent='Esa cuenta es de otro tipo de usuario. Elige la pestaña correcta.';
+ login(e,!$('#kp')||$('#kp').checked);v='inicio';render()}
+function out(){localStorage.removeItem('si_s');sessionStorage.removeItem('si_s');v='land';rl0=0;render()}
+
+/* pantallas públicas */
+const LOGO='data:image/png;base64,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';
+const LG='<div class="logo">☀️ <div style="line-height:1">SUMAQ<br><span>INTI</span></div></div>';
+const LAND=()=>`<div class="lh">${LG}<nav><a href="#como">Cómo funciona</a><a href="#beneficios">Beneficios</a><a href="#colegios">Para colegios</a><a href="#impacto">Impacto</a></nav><div class="acts"><button class="lk" onclick="reg=false;go('auth')">Ingresar</button><button class="yb" onclick="reg=true;go('auth')">Crea tu cuenta</button></div></div>
+<section class="hero"><div><span class="tag">✦ Educación financiera que transforma</span><h1>El futuro financiero de tus alumnos <em>empieza hoy.</em></h1><p>Llevamos la educación financiera al aula con experiencias prácticas, medibles y gamificadas que los jóvenes sí quieren completar.</p><div class="acts"><button class="yb" onclick="reg=true;go('auth')">Crea tu cuenta</button><button class="lk" onclick="document.getElementById('como').scrollIntoView({behavior:'smooth'})">▶ Conoce la plataforma</button></div></div>
+<div class="pv"><div class="pvh"><b>☀️ SUMAQ INTI</b><span class="m s">Ana Sánchez</span></div><p class="m s">TU PROGRESO</p><h2>¡Hola, Ana! 👋</h2><div style="border:1px solid #e2eef2;border-radius:12px;padding:12px"><small class="m">Nivel 3</small><b style="display:block">Explorador Financiero</b><div class="bar" style="margin-top:6px"><i style="width:64%"></i></div></div><div class="pvm"><div><b>2 / 5</b>Cursos</div><div><b>3</b>Simuladores</div><div><b>4</b>Insignias</div></div><div class="pvb">💰<div><b>Aprende a crear tu presupuesto</b><small>Lección 3 · 15 min</small></div></div></div></section>
+<section class="sec w" id="como"><h2>Cómo funciona</h2><div class="g3"><div class="card"><b>1</b><h2>Crea tu cuenta</h2><p>Regístrate con tu nombre y correo.</p></div><div class="card"><b>2</b><h2>Aprende y practica</h2><p>Lecciones cortas, simuladores y quizzes.</p></div><div class="card"><b>3</b><h2>Gana recompensas</h2><p>Suma puntos, sube de nivel y obtén tu certificado.</p></div></div></section>
+<section class="sec" id="beneficios"><h2>Beneficios</h2><div class="g4"><div class="card"><b>📘</b><h2>Cursos</h2><p>Lecciones breves sobre ahorro, gastos y protección.</p></div><div class="card"><b>🎮</b><h2>Simuladores</h2><p>Prueba presupuestos e interés compuesto sin riesgo.</p></div><div class="card"><b>📝</b><h2>Quizzes</h2><p>Comprueba lo que aprendiste y suma puntos.</p></div><div class="card"><b>🏆</b><h2>Retos y recompensas</h2><p>Sube de nivel y gana insignias.</p></div></div></section>
+<section class="sec w" id="colegios"><h2>Para colegios</h2><div class="card" style="max-width:640px;margin:auto"><p style="font-size:16px;color:var(--tx)">Contenido breve y práctico que se puede usar en clase: cursos, simuladores, quizzes y retos para que cada estudiante avance a su ritmo.</p><br><button class="pbtn" style="max-width:300px" onclick="rol='d';reg=false;go('auth')">Portal docente y coordinador</button></div></section>
+<section class="sec" id="impacto"><h2>La plataforma en números</h2><div class="g4"><div class="card"><b>3</b><p>cursos</p></div><div class="card"><b>2</b><p>simuladores</p></div><div class="card"><b>5</b><p>niveles de progreso</p></div><div class="card"><b>6</b><p>insignias</p></div></div></section>
+<div class="foot">☀️ Sumaq Inti · Educación financiera para jóvenes</div>`;
+const MT='<svg viewBox="0 0 400 220" preserveAspectRatio="none"><circle cx="280" cy="50" r="30" fill="#fde68a"/><path d="M0 220V120l90-70 80 80 70-50 160 100v40z" fill="#9fd8cf"/><path d="M0 220v-60l110-50 100 70 90-40 100 60v20z" fill="#4fb8a5"/><path d="M0 220v-25q100-40 200-10t200-5v40z" fill="#2c9c8a"/></svg>';
+const TABS=[['e','Estudiante'],['d','Docente'],['c','Coordinador/a']];
+const AUTH=()=>{const pu=rol!='e',ia=(i,id,ph,t)=>`<div class="iw"><span>${i}</span><input id="${id}" ${t?'type="'+t+'"':''} placeholder="${ph}" aria-label="${ph}" maxlength="60"></div>`;
+return `<div class="lg2${pu?' pu':''}"><div class="lft">${pu?`<img class="lg3 big" src="${LOGO}" alt="Sumaq Inti"><h2>Tu futuro también se planifica</h2><p class="lp">Plataforma de educación financiera gamificada para tus estudiantes de 3.º a 5.º de secundaria, con evidencia de avance para tu curso.</p><span class="yb sm">Portal del docente y coordinador</span>`:`${LG}<h2>Pequeñas decisiones hoy, <em>grandes metas mañana.</em></h2>${MT}`}</div>
+<div class="rgt"><div class="fi" onkeydown="if(event.key=='Enter')${reg?'doReg()':'doLog()'}">${pu?'':LG}<h2>${reg?'Crea tu cuenta':pu?'Bienvenido/a de nuevo':'¡Bienvenido!'}</h2><p class="m">${reg?'Regístrate para empezar.':pu?'Ingresa con la cuenta que tu colegio activó para ti.':'Inicia sesión para continuar tu aprendizaje en educación financiera.'}</p>
+<div class="tabs" role="tablist">${TABS.map(t=>`<button role="tab" aria-selected="${rol==t[0]}" class="${rol==t[0]?'on':''}" onclick="rol='${t[0]}';render()">${t[1]}</button>`).join('')}</div>
+${reg?ia('👤','n','Nombre y apellido')+(pu?ia('🏫','c','Colegio (ej. I.E. Modelo · Lima)')+ia('👥','g','Sección (ej. 4.° B)'):ia('🎓','g','Grado y sección (opcional)')):''}
+${ia('✉️','e',pu?'nombre.apellido@colegio.edu.pe':'Correo','email')}${ia('🔒','p','Contraseña (mín. 6)','password')}
+${reg?'':'<label class="kp"><input type="checkbox" id="kp" checked> Mantener sesión iniciada</label>'}<p id="er" class="er" role="alert"></p>
+<button class="${pu?'pbtn':'yb'}" style="padding:14px;font-size:15px" onclick="${reg?'doReg()':'doLog()'}">${reg?'Crear cuenta':pu?'Ingresar':'Iniciar sesión'}</button>
+<span class="sw">${reg?'¿Ya tienes cuenta?':'¿Eres nuevo?'} <a href="#" onclick="reg=!reg;render();return false">${reg?'Inicia sesión':'Crea tu cuenta'}</a></span><a href="#" class="sw" onclick="go('land');return false">← Volver al inicio</a></div></div></div>`};
+
+/* vistas del estudiante */
+function cardC(c){const d=cur().d,n=cdone(d,c),p=Math.round(n/c.l.length*100);
+ return `<div class="card cc"><div class="t"><span>${c.i}</span>${c.t}</div><p class="m s">${c.l.length} lecciones</p><div class="row"><div class="bar"><i style="width:${p}%"></i></div>${p}%</div><button class="btn ${n==c.l.length?'o':''}" onclick="sel='${c.id}';go2('cursos')">${n==0?'Comenzar':n==c.l.length?'Repasar':'Continuar'}</button></div>`}
+const go2=x=>{v=x;qres=null;render();scrollTo(0,0)};
+function inicio(){const x=cur(),d=x.d,l=lvl(d.p),mx=l==4,into=mx?100:d.p-l*100;
+ const dn=C.filter(c=>cdone(d,c)==c.l.length).length,nb=B.filter(b=>b[3](d)).length;
+ return `<h1>¡Hola, ${x.n.split(' ')[0]}! 👋</h1><p class="sub">Cada paso cuenta. Sigue avanzando.</p>
+<div class="card lev"><div class="bdg">⭐</div><div style="flex:1"><h2>Nivel ${l+1}</h2><p class="m">${LV[l]} · ${d.p} puntos</p><div class="bar"><i style="width:${into}%"></i></div><p class="m s" style="margin-top:5px">${mx?'¡Nivel máximo!':into+' / 100 puntos para el siguiente nivel'}</p></div></div>
+<div class="g3"><div class="card stat"><span>📋</span><div><small class="m">Cursos completados</small><b>${dn} / ${C.length}</b></div></div><div class="card stat"><span>🎮</span><div><small class="m">Simuladores usados</small><b>${d.sm.length} / 2</b></div></div><div class="card stat"><span>🛡️</span><div><small class="m">Insignias obtenidas</small><b>${nb} / ${B.length}</b></div></div></div>
+<h3>Tu progreso</h3><div class="card steps">${LV.map((n,i)=>`<div class="st ${i<l?'dn':i==l?'ac':''}"><div class="dt">${i<l?'✓':i==l?'★':'🔒'}</div>Nivel ${i+1}<small>${n}</small></div>`).join('')}</div>
+<h3>Próximos cursos</h3><div class="g3">${C.map(cardC).join('')}</div>
+<h3>Últimos logros</h3><div class="card">${d.log.length?d.log.map(a=>`<div class="lg"><span>🎖️ ${a[0]}</span><span><b style="color:var(--td)">+${a[1]}</b> <span class="m s">${a[2]}</span></span></div>`).join(''):'<p class="m">Aún no tienes logros. ¡Completa tu primera lección!</p>'}</div>`}
+
+function cursos(){const d=cur().d;
+ if(sel){const c=C.find(k=>k.id==sel);
+  return `<button class="btn o" onclick="sel=null;render()">← Mis cursos</button><h1 style="margin-top:14px">${c.i} ${c.t}</h1><p class="sub">Cada lección completada suma 20 puntos.</p>${c.l.map((a,i)=>{const k=c.id+i,ok=d.ls.includes(k);return `<div class="card les"><h2>${i+1}. ${a[0]}</h2><p>${a[1]}</p><button class="btn ${ok?'o':''}" ${ok?'disabled':''} onclick="lesson('${k}')">${ok?'✓ Completada':'Marcar como completada'}</button></div>`}).join('')}<button class="btn" onclick="qsel='${c.id}';go2('quizzes')">Hacer el quiz de este curso</button>`}
+ return `<h1>Mis cursos</h1><p class="sub">Elige un curso para empezar.</p><div class="g3">${C.map(cardC).join('')}</div>`}
+function lesson(k){if(cur().d.ls.includes(k))return;save(x=>x.d.ls.push(k));add(20,'Lección completada');render()}
+
+function first(k){if(!cur().d.sm.includes(k)){save(x=>x.d.sm.push(k));add(30,'Simulador usado')}}
+function simP(){const g=i=>+$('#'+i).value||0,ing=g('ig'),gs=g('g1')+g('g2')+g('g3')+g('g4'),a=ing-gs;
+ if(ing<=0)return $('#r1').innerHTML='Escribe tu ingreso mensual.';
+ $('#r1').innerHTML=`Ahorro mensual: <b>S/ ${a.toFixed(2)}</b> (${(a/ing*100).toFixed(0)}% de tu ingreso).<br>${a<0?'Gastas más de lo que ganas: revisa primero los gastos de ocio.':a/ing<.1?'Intenta llegar al menos al 10% de ahorro.':'¡Buen margen de ahorro!'}`;first('p')}
+function simI(){const g=i=>+$('#'+i).value||0,ap=g('ap'),t=g('ta'),y=g('ya');
+ if(ap<=0||y<=0)return $('#r2').innerHTML='Escribe un aporte y los años.';
+ const r=t/1200,n=y*12,fv=r?ap*(Math.pow(1+r,n)-1)/r:ap*n,ti=ap*n,f=z=>'S/ '+z.toLocaleString('es-PE',{minimumFractionDigits:2,maximumFractionDigits:2});
+ $('#r2').innerHTML=`Aportarías <b>${f(ti)}</b> y tendrías <b>${f(fv)}</b>. Intereses ganados: <b>${f(fv-ti)}</b>.<br><span class="m s">Cálculo referencial: las tasas reales varían y no están garantizadas.</span>`;first('i')}
+const inp=(l,id,val)=>`<label>${l}</label><input id="${id}" type="number" min="0" value="${val}">`;
+const simuladores=()=>`<h1>Simuladores</h1><p class="sub">Prueba números sin riesgo. Usar cada simulador por primera vez suma 30 puntos.</p><div class="g2">
+<div class="card sim"><h2>🧾 Presupuesto mensual</h2>${inp('Ingreso mensual (S/)','ig',1000)}${inp('Vivienda y servicios (S/)','g1',300)}${inp('Comida (S/)','g2',250)}${inp('Transporte (S/)','g3',100)}${inp('Ocio y otros (S/)','g4',150)}<button class="btn" style="margin-top:14px" onclick="simP()">Calcular</button><div class="res" id="r1">Completa los datos y pulsa Calcular.</div></div>
+<div class="card sim"><h2>📈 Ahorro con interés compuesto</h2>${inp('Aporte mensual (S/)','ap',100)}${inp('Tasa anual (%)','ta',4)}${inp('Años','ya',5)}<button class="btn" style="margin-top:14px" onclick="simI()">Calcular</button><div class="res" id="r2">Completa los datos y pulsa Calcular.</div></div></div>`;
+
+function quizzes(){const d=cur().d;
+ if(qsel){const c=C.find(k=>k.id==qsel);
+  return `<button class="btn o" onclick="qsel=qres=null;render()">← Quizzes</button><h1 style="margin-top:14px">${c.i} Quiz: ${c.t}</h1><p class="sub">${qres?`Resultado: ${qres.s} de ${c.q.length}. ${qres.s>=2?'¡Aprobado!':'Necesitas al menos 2 aciertos. Repasa el curso e inténtalo otra vez.'}`:'Aprueba con 2 aciertos y gana 40 puntos (la primera vez).'}</p>
+${c.q.map((q,i)=>`<div class="card les"><h2>${i+1}. ${q[0]}</h2>${q[1].map((o,j)=>`<label class="opt ${qres?(j==q[2]?'ok':qres.a[i]==j?'no':''):''}"><input type="radio" name="q${i}" value="${j}" ${qres&&qres.a[i]==j?'checked':''} ${qres?'disabled':''}> ${o}</label>`).join('')}</div>`).join('')}
+${qres?`<button class="btn" onclick="qres=null;render()">Intentar de nuevo</button>`:`<button class="btn" onclick="qsend()">Enviar respuestas</button>`}`}
+ return `<h1>Quizzes</h1><p class="sub">Comprueba lo que aprendiste en cada curso.</p><div class="g3">${C.map(c=>{const b=d.qz[c.id];return `<div class="card cc"><div class="t"><span>📝</span>${c.t}</div><p class="m s">${c.q.length} preguntas · ${b==null?'Sin intentos':'Mejor resultado: '+b+'/'+c.q.length}</p><button class="btn" onclick="qsel='${c.id}';qres=null;render()">${b==null?'Empezar':'Repetir'}</button></div>`}).join('')}</div>`}
+function qsend(){const c=C.find(k=>k.id==qsel),a=c.q.map((_,i)=>{const e=document.querySelector(`input[name=q${i}]:checked`);return e?+e.value:null});
+ if(a.includes(null))return toast('Responde todas las preguntas');
+ const s=a.filter((x,i)=>x==c.q[i][2]).length,prev=cur().d.qz[c.id];
+ save(x=>{if(prev==null||s>prev)x.d.qz[c.id]=s});qres={a,s};
+ if(s>=2&&!(prev>=2))add(40,'Quiz aprobado');render()}
+
+function retos(){const d=cur().d;
+ return `<h1>Retos</h1><p class="sub">Pon en práctica lo aprendido. Cada reto suma 30 puntos. (${d.ch.length} de ${CH.length} completados)</p><div class="g2">${CH.map((c,i)=>{const ok=d.ch.includes(i);return `<div class="card cc"><div class="t"><span>🏁</span>${c[0]}</div><p class="m">${c[1]}</p><button class="btn ${ok?'o':''}" ${ok?'disabled':''} onclick="reto(${i})">${ok?'✓ Completado':'Marcar como completado'}</button></div>`}).join('')}</div>`}
+function reto(i){if(cur().d.ch.includes(i))return;save(x=>x.d.ch.push(i));add(30,'Reto completado');render()}
+
+function recompensas(){const x=cur(),d=x.d,ok=d.p>=300;
+ return `<h1>Recompensas</h1><p class="sub">Tienes ${d.p} puntos. Las insignias se desbloquean solas.</p><div class="g3">${B.map(b=>`<div class="card bd ${b[3](d)?'':'lk'}"><b>${b[0]}</b><h2>${b[1]}</h2><p class="m s">${b[2]}</p></div>`).join('')}</div>
+<h3>Certificado digital</h3>${ok?`<div class="card cert"><p class="m">Sumaq Inti certifica que</p><h2>${x.n}</h2><p>completó la ruta de Educación Financiera con ${d.p} puntos.</p><p class="m s" style="margin:10px 0">${new Date().toLocaleDateString('es-PE')}</p><button class="btn noprint" onclick="print()">Imprimir o guardar PDF</button></div>`:`<div class="card"><p class="m">Consigue 300 puntos para desbloquear tu certificado. Te faltan <b>${300-d.p}</b>.</p></div>`}`}
+
+/* portal docente */
+let fil='Todos',bq='',sd=0,rs=[0,1,2],bim='III',cfg={ini:'2026-10-05',fin:'2026-10-09',comp:'Gestiona responsablemente los recursos económicos',av:true};
+const R0=[['Lucía Quispe',7,92,0],['Mateo Ríos',5,70,1],['Valeria Soto',5,65,2],['Diego Paredes',3,50,4],['Camila Huamán',4,45,3],['Sebastián Mena',2,22,9],['Andrea Flores',6,78,0],['Joaquín Vera',1,10,12],['Renata Castro',5,68,1],['Bruno Salas',4,52,3],['Fernanda Ayala',6,76,0],['Gabriel Luna',3,40,5]];
+const MN=['Ahorro','Billeteras digitales','Presupuesto','Crédito y deudas','Inversión básica'];
+const RT=R0.map((r,i)=>{const a=r[2],q=i==0;return{n:r[0],v:r[1],a,d:r[3],e:r[3]<=2?'Al día':r[3]<=5?'Atrasado':'Sin actividad',m:q?[100,95,88,70,31]:[Math.min(100,a+18),Math.min(100,a+8),a,Math.max(0,a-12),Math.max(0,a-28)],s:q?[85,72]:[Math.round(a*.8+14),Math.round(a*.7+14)],r:q?12:Math.round(a/8),p:q?1240:a*14,l:Math.round(a*.6)}});
+const RL=[['💰','Mi primer presupuesto mensual','Simulador · Presupuesto · 10 min',80,10,'#d6f0e3'],['📱','Yape con cabeza: ¿impulso o necesidad?','Microlearning · Billeteras digitales · 5 min',50,5,'#e5ddf1'],['🐷','Meta de ahorro de 4 semanas','Reto · Ahorro · 4 sesiones',120,20,'#ffe9a8'],['💳','¿Cuánto cuesta pagar en cuotas?','Simulador · Crédito y deudas · 12 min',90,12,'#fbd3df'],['📈','Interés simple vs. interés compuesto','Microlearning · Inversión básica · 5 min',60,5,'#cdeceb']];
+const NT=[['panel','📊','Panel general'],['est','👥','Estudiantes'],['retosd','🎯','Retos y módulos'],['rep','📄','Reportes'],['conf','⚙️','Configuración']];
+const av=a=>a.reduce((x,y)=>x+y,0)/a.length,pb=n=>`<div class="pb"><i style="width:${n}%"></i></div>`,fn=n=>n.split(' ')[0];
+const ini=n=>n.split(' ').slice(0,2).map(w=>w[0]).join('').toUpperCase(),pl=(n,s,p)=>n+' '+(n==1?s:p);
+const fe=d=>new Date(d+'T00:00').toLocaleDateString('es-PE',{day:'numeric',month:'long'}),fd=d=>new Date(d+'T00:00').toLocaleDateString('es-PE',{weekday:'long',day:'numeric',month:'long'});
+
+function shellT(c){const x=cur();return `<div class="app tp"><nav class="side" aria-label="Menú principal"><div class="bl"><img class="lg3" src="${LOGO}" alt=""><div><b>SUMAQ INTI</b><small>Portal ${x.r=='c'?'coordinador':'docente'}</small></div></div><div class="sch">🏫 ${esc(x.c)}</div>${NT.map(n=>`<button class="${v==n[0]?'on':''}" onclick="go('${n[0]}')">${n[1]} ${n[2]}</button>`).join('')}<div class="lic"><small>Licencia institucional activa</small><b>Vence: dic. 2026</b></div></nav><div class="main"><div class="top"><span class="chip">${esc(x.g)}</span><div class="avt" title="${esc(x.n)}">${ini(x.n)}</div></div>${c}<p class="ps" style="margin-top:14px;font-size:11px">Los datos de estudiantes son de ejemplo para la demo.</p></div></div>`}
+
+function tPanel(){const x=cur(),t=x.t,N=RT.length,act=RT.filter(r=>r.d<7).length,al=N-act,lc=RT.filter(r=>r.s[1]<60).length,top=[...RT].sort((a,b)=>b.v-a.v)[0],A=t.asig[0];
+ const mod=MN.map((n,i)=>[n,Math.round(av(RT.map(r=>r.m[i])))]),wk=[7,8,9,8,10,act],mx=Math.max(...wk,N),nm=top.n.split(' ');
+ return `<h1>Hola, ${x.r=='c'?'Coord.':'Prof.'} ${esc(fn(x.n))} 👋</h1><p class="ps">Resumen de avance de tu sección esta semana</p>
+<div class="k4">${[[act+'/'+N,'Estudiantes activos esta semana'],[Math.round(av(RT.map(r=>r.a)))+'%','Avance promedio de la sección'],[RT.reduce((s,r)=>s+r.r,0),'Retos completados'],['Nivel '+Math.round(av(RT.map(r=>r.v))),'Nivel promedio alcanzado']].map(k=>`<div class="pc"><b>${k[0]}</b><span>${k[1]}</span></div>`).join('')}</div>
+<div class="g2p"><div class="pc"><h2>Avance por módulo</h2>${mod.map(m=>`<div class="mr"><span>${m[0]}</span>${pb(m[1])}<b>${m[1]}%</b></div>`).join('')}<h2 style="margin-top:22px">Actividad de las últimas 6 semanas</h2><div class="ch">${wk.map((w,i)=>`<div><i style="height:${w/mx*100}%" class="${i==5?'y':''}"></i><small>S${i+1}</small></div>`).join('')}</div></div>
+<div class="pc"><h2 style="margin-bottom:12px">Alertas para ti</h2><div class="al a1">⚠️<span><b>${pl(al,'estudiante','estudiantes')}</b> sin actividad en los últimos 7 días.</span></div><div class="al a2">📉<span><b>${pl(lc,'estudiante','estudiantes')}</b> con puntaje bajo en el simulador de crédito.</span></div><div class="al a3">🏅<span><b>${nm[0]} ${nm[1][0]}.</b> alcanzó el nivel ${top.v} y desbloqueó la insignia «Ahorrista».</span></div><div class="al a4">📅<span>${A?(A.r.length>1?`Tus ${A.r.length} retos asignados vencen el <b>${fd(A.fin)}</b>.`:`El reto «${RL[A.r[0]][1]}» vence el <b>${fd(A.fin)}</b>.`):'Aún no asignaste retos. Hazlo en «Retos y módulos».'}</span></div><button class="pbtn" onclick="fil='alerta';go('est')">Ver estudiantes con alerta</button></div></div>`}
+
+const flt=()=>RT.map((r,i)=>[r,i]).filter(([r])=>(fil=='Todos'||(fil=='alerta'?r.e!='Al día':r.e==fil))&&r.n.toLowerCase().includes(bq.toLowerCase()));
+const rows=()=>{const hoy=d=>d==0?'Hoy':d==1?'Ayer':'Hace '+d+' días',cl={'Al día':'ok','Atrasado':'wa','Sin actividad':'no'};
+ return flt().map(([r,i])=>`<tr class="${i==sd?'sel':''}" tabindex="0" onclick="sd=${i};render()" onkeydown="if(event.key=='Enter'){sd=${i};render()}"><td><b>${r.n}</b></td><td>${r.v}</td><td style="width:26%">${pb(r.a)}</td><td>${hoy(r.d)}</td><td><span class="chp ${cl[r.e]}">${r.e}</span></td></tr>`).join('')||'<tr><td colspan="5">Sin resultados.</td></tr>'};
+const upd=()=>{$('#tb').innerHTML=rows();$('#cnt').textContent='Mostrando '+flt().length+' de '+RT.length};
+function tEst(){const x=cur(),r=RT[sd],nt=x.t.notas[r.n]||[];
+ return `<div class="ph"><div><h1>Seguimiento por estudiante</h1><p class="ps">${esc(x.g)} · ${RT.length} estudiantes</p></div><div class="ctr"><input id="bq" placeholder="🔍 Buscar estudiante" aria-label="Buscar estudiante" value="${esc(bq)}" oninput="bq=this.value;upd()"><select aria-label="Estado" onchange="fil=this.value;render()">${[['Todos','Estado: Todos'],['Al día','Al día'],['Atrasado','Atrasado'],['Sin actividad','Sin actividad'],['alerta','Con alerta']].map(o=>`<option value="${o[0]}" ${o[0]==fil?'selected':''}>${o[1]}</option>`).join('')}</select></div></div>
+<div class="g2e"><div class="pc" style="overflow-x:auto"><table class="tt"><thead><tr><th>Estudiante</th><th>Nivel</th><th>Avance</th><th>Última actividad</th><th>Estado</th></tr></thead><tbody id="tb">${rows()}</tbody></table><p class="ps" id="cnt" style="text-align:center;margin:12px 0 0">Mostrando ${flt().length} de ${RT.length}</p></div>
+<div class="pc"><div class="dh"><div class="avt">${ini(r.n)}</div><div><h2>${r.n}</h2><small class="ps">${esc(x.g)} · Nivel ${r.v} · ${r.p.toLocaleString('es-PE')} puntos</small></div></div><div style="margin-bottom:12px">${r.m[0]>=90?'<span class="chp lil">🏅 Ahorrista</span> ':''}<span class="chp lil">🎯 ${pl(r.r,'reto','retos')}</span></div>
+<h2 style="margin-bottom:6px">Progreso por módulo</h2>${MN.slice(0,4).map((n,i)=>`<div class="mr" style="grid-template-columns:90px 1fr 40px"><span>${n.split(' ')[0]}</span>${pb(r.m[i])}<b>${r.m[i]}%</b></div>`).join('')}
+<h2 style="margin:14px 0 4px">Resultados en simuladores</h2><div class="sr"><span>Planificador de presupuesto</span><b>${r.s[0]}/100</b></div><div class="sr"><span>Simulador de crédito</span><b>${r.s[1]}/100</b></div>
+${nt.length?`<h2 style="margin:14px 0 4px">Historial</h2>${nt.slice(0,3).map(z=>`<div class="sr"><span>${z[0]=='m'?'✉️':'📝'} ${esc(z[1])}</span><small>${z[2]}</small></div>`).join('')}`:''}
+<div style="display:flex;gap:8px;margin-top:14px"><button class="pbtn" onclick="nota('m')">Enviar mensaje</button><button class="pbtn o" onclick="nota('o')">Agregar observación</button></div></div></div>`}
+function nota(t){const n=RT[sd].n,z=prompt((t=='m'?'Mensaje para ':'Observación sobre ')+n);if(!z||!z.trim())return;
+ save(u=>{(u.t.notas[n]=u.t.notas[n]||[]).unshift([t,z.trim(),new Date().toLocaleDateString('es-PE')])});toast(t=='m'?'Mensaje guardado en el historial':'Observación guardada');render()}
+
+const tg=i=>{rs=rs.includes(i)?rs.filter(k=>k!=i):[...rs,i];render()};
+function asig(){if(!rs.length)return toast('Selecciona al menos un reto');if(!cfg.ini||!cfg.fin||cfg.fin<cfg.ini)return toast('Revisa las fechas de inicio y vencimiento');
+ save(u=>{u.t.asig.unshift({r:[...rs],ini:cfg.ini,fin:cfg.fin,comp:cfg.comp,av:cfg.av});u.t.draft=null});rs=[];toast('Retos asignados a la sección');render()}
+function draft(){save(u=>{u.t.draft={rs:[...rs],cfg:{...cfg}}});toast('Borrador guardado')}
+function tRetos(){const x=cur(),t=x.t;if(!rl0){rl0=1;if(t.draft){rs=t.draft.rs;cfg=t.draft.cfg}}
+ const tot=rs.reduce((s,i)=>s+RL[i][4],0),L=t.asig[0];
+ return `<h1>Asignar retos de la semana</h1><p class="ps">Elige qué practicarán tus estudiantes y para cuándo</p>
+<div class="g2e"><div class="pc"><h2>Biblioteca de retos <small style="font-weight:400;color:#7b6890">· ${rs.length} seleccionados</small></h2><div style="margin-top:12px">${RL.map((c,i)=>{const on=rs.includes(i);return `<label class="rc ${on?'on':''}"><input type="checkbox" ${on?'checked':''} onchange="tg(${i})"><span class="ri" style="background:${c[5]}">${c[0]}</span><span class="rt">${c[1]}<small>${c[2]}</small></span><span class="chp yl">+${c[3]} pts</span></label>`}).join('')}</div></div>
+<div class="pc fm"><h2>Configuración de la asignación</h2><label for="sc">Sección</label><input id="sc" value="${esc(x.g)} · ${RT.length} estudiantes" readonly><div class="dg"><div><label for="d1">Inicia</label><input id="d1" type="date" value="${cfg.ini}" onchange="cfg.ini=this.value"></div><div><label for="d2">Vence</label><input id="d2" type="date" value="${cfg.fin}" onchange="cfg.fin=this.value"></div></div><label for="cp">Competencia vinculada (CNEB)</label><input id="cp" value="${esc(cfg.comp)}" oninput="cfg.comp=this.value"><label class="sw2"><span>🔔 Avisar a los estudiantes en la app</span><input type="checkbox" ${cfg.av?'checked':''} onchange="cfg.av=this.checked"></label><p class="ps">Tiempo estimado total: ≈ ${tot} min repartidos en la semana.</p><button class="pbtn y" onclick="asig()">Asignar a la sección</button><div style="height:10px"></div><button class="pbtn o" onclick="draft()">Guardar borrador</button>${L?`<p class="ps" style="margin:12px 0 0">Última asignación: ${pl(L.r.length,'reto','retos')}, vence el ${fe(L.fin)}.</p>`:''}</div></div>`}
+
+const fname=()=>'Informe_'+(cur().g||'').replace(/[^A-Za-z0-9]/g,'')+'_'+bim+'Bimestre';
+function xls(){const h=['Estudiante','Nivel','Avance %','Última actividad (días)','Estado','Retos','Puntos',...MN,'Sim. presupuesto','Sim. crédito'],rw=RT.map(r=>[r.n,r.v,r.a,r.d,r.e,r.r,r.p,...r.m,...r.s]),
+ csv='\ufeff'+[h,...rw].map(r=>r.join(';')).join('\n'),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download=fname()+'.csv';a.click();toast('Archivo descargado (abre con Excel)')}
+function mail(){const N=RT.length,b=`Resumen ${bim} Bimestre · ${cur().g}\n- Avance promedio: ${Math.round(av(RT.map(r=>r.a)))}%\n- Retos completados: ${RT.reduce((s,r)=>s+r.r,0)}\n- Estudiantes sin actividad en 7 días: ${RT.filter(r=>r.d>=7).length} de ${N}`;
+ location.href='mailto:?subject='+encodeURIComponent('Informe '+cur().g+' · '+bim+' Bimestre')+'&body='+encodeURIComponent(b)}
+function tRep(){const x=cur(),g={AD:0,A:0,B:0,C:0},cl={AD:'#4f2a6b',A:'#7fb8a2',B:'#ffc845',C:'#e473a3'},m=i=>av(RT.map(r=>r.m[i])),c1=Math.round((m(0)+m(1))/2),c2=Math.round((m(2)+m(3)+m(4))/3);
+ RT.forEach(r=>g[r.a>=85?'AD':r.a>=65?'A':r.a>=40?'B':'C']++);
+ return `<div class="ph"><div><h1>Reportes y evidencias</h1><p class="ps">Evidencia de logro para tu registro y para la dirección</p></div><div class="ctr"><select aria-label="Bimestre" onchange="bim=this.value;render()">${['I','II','III','IV'].map(b=>`<option value="${b}" ${b==bim?'selected':''}>${b} Bimestre</option>`).join('')}</select></div></div>
+<div class="pc" style="margin-bottom:14px"><h2>Competencia: Gestiona responsablemente los recursos económicos</h2><p class="ps" style="margin:6px 0 0">Distribución de estudiantes por nivel de logro (AD ≥85 %, A ≥65 %, B ≥40 %, C &lt;40 % de avance)</p><div class="sg">${Object.keys(g).filter(k=>g[k]).map(k=>`<div style="flex:${g[k]};background:${cl[k]}">${k} · ${g[k]}</div>`).join('')}</div></div>
+<div class="g2e"><div class="pc"><h2>Capacidades evaluadas</h2><div class="cr"><span>Comprende las relaciones entre los elementos del sistema económico y financiero</span>${pb(c1)}<b>${c1}%</b></div><div class="cr"><span>Toma decisiones económicas y financieras</span>${pb(c2)}<b>${c2}%</b></div>
+<h2 style="margin:20px 0 6px">Evidencias generadas por la app</h2><table class="tt"><thead><tr><th>Evidencia</th><th>Registros</th></tr></thead><tbody><tr><td>Retos completados</td><td><b>${RT.reduce((s,r)=>s+r.r,0)}</b></td></tr><tr><td>Resultados de simuladores</td><td><b>${RT.length*2}</b></td></tr><tr><td>Lecciones de microlearning vistas</td><td><b>${RT.reduce((s,r)=>s+r.l,0)}</b></td></tr></tbody></table></div>
+<div class="pc"><h2 style="margin-bottom:12px">Exportar reporte</h2><div class="ex"><b>📄 ${fname()}.pdf</b><br>Incluye nivel de logro por estudiante, capacidades y retos completados.</div><div class="noprint"><button class="pbtn" onclick="print()">⬇ Descargar PDF</button><div style="height:8px"></div><button class="pbtn o" onclick="xls()">📊 Exportar a Excel</button><div style="height:8px"></div><button class="pbtn y" onclick="mail()">✉ Compartir con dirección</button></div></div></div>`}
+
+function svc(){const n=$('#cn').value.trim(),c=$('#cc').value.trim(),g=$('#cs').value.trim();if(!n||!c||!g)return toast('Completa todos los campos');save(u=>{u.n=n;u.c=c;u.g=g});toast('Cambios guardados');render()}
+function tConf(){const x=cur();return `<h1>Configuración</h1><p class="ps">Datos de tu cuenta y de tu sección</p><div class="pc fm" style="max-width:480px"><label for="cn">Nombre</label><input id="cn" value="${esc(x.n)}"><label for="cc">Colegio</label><input id="cc" value="${esc(x.c)}"><label for="cs">Sección</label><input id="cs" value="${esc(x.g)}"><div style="height:16px"></div><button class="pbtn y" onclick="svc()">Guardar cambios</button><div style="height:10px"></div><button class="pbtn o" onclick="out()">Cerrar sesión</button></div>`}
+const TV={panel:tPanel,est:tEst,retosd:tRetos,rep:tRep,conf:tConf};
+
+const VIEWS={inicio,cursos,simuladores,quizzes,retos,recompensas};
+function render(){me=ses();if(me&&!U()[me])me=null;const a=$('#app');
+ if(!me){if(v!='auth')v='land';a.innerHTML=v=='auth'?AUTH():LAND();return}
+ const x=cur();if(role(x)!='e'){if(!TV[v])v='panel';a.innerHTML=shellT(TV[v]());return}if(v=='land'||v=='auth'||!VIEWS[v])v='inicio';
+ a.innerHTML=`<div class="app"><nav class="side"><div class="logo">☀️ SUMAQ <span>INTI</span></div>${NAV.map(n=>`<button class="${v==n[0]?'on':''}" onclick="go('${n[0]}')">${n[1]} ${n[2]}</button>`).join('')}</nav><div class="main"><div class="top"><div class="av">${x.n.charAt(0)}</div><div>${x.n}<small class="m" style="display:block">${x.g||''}</small></div><button class="btn o" onclick="out()">Salir</button></div>${VIEWS[v]()}</div></div>`}
+render();
+</script>
+</body>
+</html>
